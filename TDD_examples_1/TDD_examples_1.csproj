@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICooling.cs" />
+    <Compile Include="IPrimes.cs" />
     <Compile Include="IRoman.cs" />
     <Compile Include="ITravel.cs" />
     <Compile Include="Program.cs" />
