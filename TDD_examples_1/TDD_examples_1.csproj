@@ -46,6 +46,7 @@
     <Compile Include="ICalculator.cs" />
     <Compile Include="ICooling.cs" />
     <Compile Include="implementations\Calculator.cs" />
+    <Compile Include="implementations\Prime.cs" />
     <Compile Include="IPrimes.cs" />
     <Compile Include="IRoman.cs" />
     <Compile Include="ITravel.cs" />
