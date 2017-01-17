@@ -20,6 +20,10 @@ namespace TDD_examples_1
 
     public class BadTemperatureException : Exception
     {
+        public BadTemperatureException()
+        {
+        }
+
         public BadTemperatureException(string msg) : base(msg) { }
     }
 }

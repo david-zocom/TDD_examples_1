@@ -47,6 +47,8 @@
     <Compile Include="IChessGame.cs" />
     <Compile Include="ICooling.cs" />
     <Compile Include="implementations\Calculator.cs" />
+    <Compile Include="implementations\Cooling.cs" />
+    <Compile Include="implementations\Prime.cs" />
     <Compile Include="implementations\Chess.cs" />
     <Compile Include="IPrimes.cs" />
     <Compile Include="IRoman.cs" />
