@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IChessGame.cs" />
     <Compile Include="ICooling.cs" />
     <Compile Include="IPrimes.cs" />
     <Compile Include="IRoman.cs" />
