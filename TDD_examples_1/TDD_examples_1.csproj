@@ -50,6 +50,7 @@
     <Compile Include="implementations\Cooling.cs" />
     <Compile Include="implementations\Prime.cs" />
     <Compile Include="implementations\Chess.cs" />
+    <Compile Include="implementations\Roman.cs" />
     <Compile Include="IPrimes.cs" />
     <Compile Include="IRoman.cs" />
     <Compile Include="ITravel.cs" />
