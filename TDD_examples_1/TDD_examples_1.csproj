@@ -51,6 +51,7 @@
     <Compile Include="implementations\Prime.cs" />
     <Compile Include="implementations\Chess.cs" />
     <Compile Include="implementations\Roman.cs" />
+    <Compile Include="implementations\Travel.cs" />
     <Compile Include="IPrimes.cs" />
     <Compile Include="IRoman.cs" />
     <Compile Include="ITravel.cs" />
