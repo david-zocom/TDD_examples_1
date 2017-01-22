@@ -49,6 +49,7 @@
     <Compile Include="implementations\Calculator.cs" />
     <Compile Include="implementations\Chess.cs" />
     <Compile Include="implementations\Driving.cs" />
+    <Compile Include="implementations\Feetbook.cs" />
     <Compile Include="implementations\StellarCommunicator.cs" />
     <Compile Include="IPrimes.cs" />
     <Compile Include="IRoman.cs" />
