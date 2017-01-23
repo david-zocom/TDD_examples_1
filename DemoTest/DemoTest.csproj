@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="CalculatorTest.cs" />
     <Compile Include="CoolingTest.cs" />
+    <Compile Include="DatabaseTest.cs" />
     <Compile Include="PrimesTest.cs" />
     <Compile Include="RomanTest.cs" />
     <Compile Include="TravelTest.cs" />

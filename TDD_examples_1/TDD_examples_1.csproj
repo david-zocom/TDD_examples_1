@@ -48,6 +48,7 @@
     <Compile Include="ICooling.cs" />
     <Compile Include="implementations\Calculator.cs" />
     <Compile Include="implementations\Cooling.cs" />
+    <Compile Include="implementations\Database.cs" />
     <Compile Include="implementations\Prime.cs" />
     <Compile Include="implementations\Chess.cs" />
     <Compile Include="implementations\Driving.cs" />
