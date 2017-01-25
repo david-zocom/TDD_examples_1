@@ -18,7 +18,11 @@ namespace TDD_examples_1.implementations
 
         public void movePiece(int rowFrom, int columnFrom, int rowTo, int columnTo)
         {
-            throw new NotImplementedException();
+            Piece p = board[rowFrom, columnFrom];
+            board[rowFrom, columnFrom] =
+                    new Piece() { ePiece = ePiece.None, eColor = eColor.White };
+            board[rowTo, columnTo] = p;
+            //throw new NotImplementedException();
         }
 
         public void putPiece(Piece p, int row, int column)

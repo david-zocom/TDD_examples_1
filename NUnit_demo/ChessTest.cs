@@ -86,7 +86,95 @@ namespace NUnit_demo
             Assert.That(() => c.movePiece(1, 1, -5, -7),
                 Throws.TypeOf<IndexOutOfRangeException>());*/
         }
+        [Test]
+        public void MovePiece_NoPieceToMove()
+        {
+            Chess c = new Chess();
+            int row = 3, col = 4;
+            c.putPiece(new Piece { ePiece = ePiece.None }, row, col);
+            Assert.That(() => c.movePiece(row, col, row + 1, col),
+                Throws.TypeOf<NoPieceAtPositionException>());
+        }
 
+        [Test]
+        public void MovePiece_SameColorPieceOnDestination()
+        {
+            Chess c = new Chess();
+            c.setupBoard();
+            int row = 1, col = 1;
+            Assert.That(() => c.movePiece(row, col, row, col + 1),
+                Throws.TypeOf<IllegalMoveException>());
+        }
 
+        [Test]
+        public void MovePiece_PieceInTheWay()
+        {
+            Chess c = new Chess();
+            c.setupBoard();
+            int row = 1, col = 1;
+            Assert.That(() => c.movePiece(row, col, row + 3, col),
+                Throws.TypeOf<IllegalMoveException>());
+        }
+
+        [Test]
+        public void MovePiece_MoveToSamePosition()
+        {
+            Chess c = new Chess();
+            c.setupBoard();
+            int row = 1, col = 4;
+            Assert.That(() => c.movePiece(row, col, row, col),
+                Throws.TypeOf<IllegalMoveException>());
+        }
+
+        [Test]
+        public void MovePiece_Rook_IncorrectMove()
+        {
+            Chess c = new Chess();
+            c.setupBoard();
+            int row = 5, col = 4;
+            c.putPiece(new Piece() { ePiece = ePiece.Rook, eColor = eColor.Black },
+                row, col);
+            Assert.That(() => c.movePiece(row, col, row - 1, col + 1),
+                Throws.TypeOf<IllegalMoveException>());
+        }
+        [Test]
+        public void MovePiece_Rook_CorrectMove()
+        {
+            Chess c = new Chess();
+            c.setupBoard();
+            int row = 5, col = 4;
+            c.putPiece(new Piece() { ePiece = ePiece.Rook, eColor = eColor.Black },
+                row, col);
+            c.movePiece(row, col, row, 8);
+
+            ePiece ep = c.getPieceAt(row, col).ePiece;
+            Assert.That(ep, Is.EqualTo(ePiece.None));
+            Piece p = c.getPieceAt(row, 8);
+            Assert.That(p.ePiece, Is.EqualTo(ePiece.Rook));
+            Assert.That(p.eColor, Is.EqualTo(eColor.Black));
+
+            // todo: move left, move up, move down
+        }
+
+        [Test]
+        public void MovePiece_Pawn_IncorrectMove()
+        {
+            Chess c = new Chess();
+            c.setupBoard();
+            int row = 5, col = 4;
+            c.putPiece(new Piece() { ePiece = ePiece.Pawn, eColor = eColor.Black },
+                    row, col);
+            Assert.That(() => c.movePiece(row, col, row, col + 1),
+                Throws.TypeOf<IllegalMoveException>());
+            // todo: återstående felaktiga drag, t.ex.
+            // gå bakåt, gå snett om det inte finns en pjäs att slå...
+        }
+        [TestCase()]
+        public void MovePiece_Pawn_CorrectMove()
+        {
+            // 2 steg framåt om på startpositionen
+            // 1 steg framåt annars
+            // slå en pjäs i sidled framåt
+        }
     }
 }
