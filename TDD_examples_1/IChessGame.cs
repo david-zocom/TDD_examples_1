@@ -24,7 +24,7 @@ namespace TDD_examples_1
         void setupBoard();
 
         /* Returns the piece at the specified row and
-         * column or Piece.None.
+         * column, can be ePiece.None.
          */
         Piece getPieceAt(int row, int column);
 
