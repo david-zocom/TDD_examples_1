@@ -65,6 +65,7 @@
     <Compile Include="ChessTest.cs" />
     <Compile Include="DatabaseTest.cs" />
     <Compile Include="DriverSystemTest.cs" />
+    <Compile Include="StellarCommunicatorTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
