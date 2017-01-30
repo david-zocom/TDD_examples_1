@@ -5,12 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using TDD_examples_1.implementations;
+using Moq;
 
 namespace NUnit_demo
 {
+
     [TestFixture]
     public class StellarCommunicatorTest
     {
+        private StellarCommunicator sc;
+
+        [SetUp]
+        public void SetUp()
+        {
+            sc = new StellarCommunicator();
+        }
+
         [Test]
         [TestCase(double.NaN, "address", "message")]
         [TestCase(double.PositiveInfinity, "address", "message")]
@@ -24,7 +34,6 @@ namespace NUnit_demo
         public void SendMessage_IncorrectValues_Throws(double distance,
             string spaceAddress, string message)
         {
-            StellarCommunicator sc = new StellarCommunicator();
             //ChooseRangeCom
             Assert.That(() => sc.SendMessage(distance,
                spaceAddress, message), Throws.TypeOf<Exception>());
@@ -34,6 +43,18 @@ namespace NUnit_demo
         // short range message, fail
         // long range message, success
         // long range message, fail
+        [Test]
+        public void SendMessage_ShortRange_Success()
+        {
+            var mockSR = new Mock<ISpaceRangeCom>();
+            var mockLR = new Mock<ISpaceRangeCom>();
 
+            sc.ChooseRangeType(mockSR.Object, mockLR.Object);
+
+            bool result = sc.SendMessage(StellarCommunicator.ShortRangeMax,
+                "Vintergatan", "We come in peace");
+
+            Assert.That(result, Is.True);
+        }
     }
 }

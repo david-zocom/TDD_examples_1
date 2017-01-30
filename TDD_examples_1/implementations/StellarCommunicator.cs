@@ -8,12 +8,12 @@ namespace TDD_examples_1.implementations
 {
     public class StellarCommunicator
     {
-        private const int NumberOfTries = 3;
+        public const int NumberOfTries = 3;
         private ISpaceRangeCom srCom;
         private ISpaceRangeCom lrCom;
-        private const long ShortRangeMax = 25000L; // maximum range of S.R.Com.
+        public const long ShortRangeMax = 25000L; // maximum range of S.R.Com.
 
-        public void ChooseRangeType(ISpaceRangeCom shortRange, 
+        public void ChooseRangeType(ISpaceRangeCom shortRange,
             ISpaceRangeCom longRange)
         {
             srCom = shortRange;
@@ -26,7 +26,12 @@ namespace TDD_examples_1.implementations
             // Figure out what communicator to use and send the message
             // Messages may become lost in space so we should
             // retry sending up to 3 times
-            throw new NotImplementedException();
+            bool badDistance = double.IsInfinity(distance)
+                || double.IsNaN(distance) || distance < 0;
+            if (badDistance || string.IsNullOrEmpty(spaceAddress) ||
+                string.IsNullOrEmpty(message))
+                throw new Exception();
+            return true;
         }
 
         /*public int Add(int x, int y)
