@@ -31,7 +31,17 @@ namespace TDD_examples_1.implementations
             if (badDistance || string.IsNullOrEmpty(spaceAddress) ||
                 string.IsNullOrEmpty(message))
                 throw new Exception();
-            return true;
+            bool result = false;
+            int counter = 0;
+            while (!result && counter < NumberOfTries)
+            {
+                if (distance <= ShortRangeMax)
+                    result = srCom.SendMessage(spaceAddress, message);
+                else
+                    result = lrCom.SendMessage(spaceAddress, message);
+                counter++;
+            }
+            return result;
         }
 
         /*public int Add(int x, int y)
