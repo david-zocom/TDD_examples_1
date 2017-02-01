@@ -149,5 +149,39 @@ namespace NUnit_demo
             Assert.NotNull(posts);
             Assert.Equal(3, posts.Count);
         }
+
+        [Fact]
+        public void getCommentsForPost_InvalidValues_Throws()
+        {
+            DoLogin();
+            Assert.Throws<Exception>(() => um.getCommentsForPost(null));
+        }
+        [Fact]
+        public void getCommentsForPost_NotLoggedIn_Throws()
+        {
+            Assert.Throws<Exception>(() => 
+                um.getCommentsForPost(new Post()));
+        }
+        [Fact]
+        public void getCommentsForPost_EmptyList()
+        {
+            DoLogin();
+            List<Comment> comments = um.getCommentsForPost(new Post());
+            Assert.NotNull(comments);
+            Assert.Empty(comments);
+        }
+        [Fact]
+        public void getCommentsForPost_NonEmptyList()
+        {
+            DoLogin();
+            Post p = new Post();
+            p.Comments = new List<Comment>();
+            p.Comments.Add(new Comment());
+            p.Comments.Add(new Comment());
+            p.Comments.Add(new Comment());
+            List<Comment> comments = um.getCommentsForPost(p);
+            Assert.NotNull(comments);
+            Assert.Equal(3, comments.Count);
+        }
     }
 }

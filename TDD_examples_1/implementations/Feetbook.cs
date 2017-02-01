@@ -52,7 +52,11 @@ namespace TDD_examples_1.implementations
         }
         public List<Comment> getCommentsForPost(Post post)
         {
-            throw new NotImplementedException();
+            if (post == null)
+                throw new Exception();
+            if (!UserIsLoggedIn)
+                throw new Exception();
+            return post.Comments;
         }
     }
 
@@ -74,6 +78,10 @@ namespace TDD_examples_1.implementations
     // No logic in Post and Comment, we don't need to test them
     public class Post
     {
+        public Post()
+        {
+            Comments = new List<Comment>();
+        }
         public User Author { get; set; }
         public string ImageUrl { get; set; }
         public List<Comment> Comments { get; set; }
